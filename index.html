@@ -31,6 +31,14 @@
     #sos {
       margin-top: 10px;
     }
+
+    #map-container {
+      visibility: hidden;
+    }
+
+    #vibration-button {
+      visibility:hidden;
+    }
     </style>
 
     <div class="container">
@@ -39,17 +47,17 @@
       <hr>
       <div class="nav-bar">
         <div class="col-md-12 text-center">
-          <button type="button" class="btn btn-secondary">Map</button>
-          <button type="button" class="btn btn-secondary">SOS button</button>
+          <button type="button" class="btn btn-secondary" onclick="showMap()">Map</button>
+          <button type="button" class="btn btn-secondary" onclick="showButton()">SOS button</button>
         </div>
       </div>
       
-      <div class="map-container">
+      <div id="map-container">
         <div id = "map"></div>
       </div>
 
 
-      <div class="vibration-button">
+      <div id="vibration-button">
         <div class="col-md-12 text-center" id="sos">
           <button type="button" class="btn btn-danger">SOS!!!!!!!!!!</button>
         </div>
@@ -80,19 +88,40 @@
         }
 
         function vibrate() {
-          window.navigator.vibrate(100);
-          window.navigator.vibrate(100);
-          window.navigator.vibrate(100);
-          window.navigator.vibrate(200);
-          window.navigator.vibrate(200);
-          window.navigator.vibrate(200);
-          window.navigator.vibrate(100);
-          window.navigator.vibrate(100);
-          window.navigator.vibrate(100);
-          window.navigator.vibrate(100);
+          window.navigator.vibrate(300);
+          window.navigator.vibrate(300);
+          window.navigator.vibrate(300);
+          window.navigator.vibrate(500);
+          window.navigator.vibrate(500);
+          window.navigator.vibrate(500);
+          window.navigator.vibrate(300);
+          window.navigator.vibrate(300);
+          window.navigator.vibrate(300);
         }
 
         map.on('locationerror', onLocationError);
+
+        function hideAll() {
+          document.getElementById('vibration-button').style.visibility = 'hidden';
+          document.getElementById('map-container').style.visibility = 'hidden';
+        }
+
+        function showMap() {
+          hideAll()
+          document.getElementById('map-container').style.minHeight = '600x';
+          document.getElementById('map-container').style.height = 'auto';
+          document.getElementById('map-container').style.width = 'auto';
+          document.getElementById('map-container').style.visibility = 'visible';
+        }
+
+        function showButton() {
+          hideAll()
+          document.getElementById('map-container').style.height = '0px';
+          document.getElementById('map-container').style.width = '0px';
+          document.getElementById('vibration-button').style.visibility = 'visible';
+
+        }
+
       </script>
 
     </div>
