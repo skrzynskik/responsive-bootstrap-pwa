@@ -28,6 +28,9 @@
         height: auto;
         width: auto;
     }
+    #sos {
+      margin-top: 10px;
+    }
     </style>
 
     <div class="container">
@@ -41,7 +44,16 @@
         </div>
       </div>
       
-      <div id = "map"></div>
+      <div class="map-container">
+        <div id = "map"></div>
+      </div>
+
+
+      <div class="vibration-button">
+        <div class="col-md-12 text-center" id="sos">
+          <button type="button" class="btn btn-danger">SOS!!!!!!!!!!</button>
+        </div>
+      </div>
       <script>
         var map = L.map('map').fitWorld();
 
@@ -65,6 +77,19 @@
 
         function onLocationError(e) {
           alert(e.message);
+        }
+
+        function vibrate() {
+          window.navigator.vibrate(100);
+          window.navigator.vibrate(100);
+          window.navigator.vibrate(100);
+          window.navigator.vibrate(200);
+          window.navigator.vibrate(200);
+          window.navigator.vibrate(200);
+          window.navigator.vibrate(100);
+          window.navigator.vibrate(100);
+          window.navigator.vibrate(100);
+          window.navigator.vibrate(100);
         }
 
         map.on('locationerror', onLocationError);
