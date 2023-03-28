@@ -1,0 +1,9 @@
+{
+  "name": "Mobile-first bootstrap pwa example",
+  "short_name": "bootstrappwa",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ffffff",
+  "orientation": "portrait-primary"
+}

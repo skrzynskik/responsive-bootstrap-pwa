@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <link rel="manifest" href="manifest.json" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>bootstrap-responsive-pwa</title>
@@ -40,29 +41,39 @@
       visibility:hidden;
     }
     </style>
-
-    <div class="container">
-      <h1 class="text-center mt-3 md-3">Mobile-first bootstrap pwa example</h1>
-      <h3 class="text-center">Author: Kacper Skrzynski, Informatyka Stosowana UEK</h2>
-      <hr>
-      <div class="nav-bar">
-        <div class="col-md-12 text-center">
-          <button type="button" class="btn btn-secondary" onclick="showMap()">Map</button>
-          <button type="button" class="btn btn-secondary" onclick="showButton()">SOS button</button>
+    <main>
+      <div class="container">
+        <h1 class="text-center mt-3 md-3">Mobile-first bootstrap pwa example</h1>
+        <h3 class="text-center">Author: Kacper Skrzynski, Informatyka Stosowana UEK</h2>
+        <hr>
+        <div class="nav-bar">
+          <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-secondary" onclick="showMap()">Map</button>
+            <button type="button" class="btn btn-secondary" onclick="showButton()">SOS button</button>
+          </div>
         </div>
-      </div>
-      
-      <div id="map-container">
-        <div id = "map"></div>
-      </div>
-
-
-      <div id="vibration-button">
-        <div class="col-md-12 text-center" id="sos">
-          <button type="button" class="btn btn-danger">SOS!!!!!!!!!!</button>
+        
+        <div id="map-container">
+          <div id = "map"></div>
         </div>
-      </div>
+  
+  
+        <div id="vibration-button">
+          <div class="col-md-12 text-center" id="sos">
+            <button type="button" class="btn btn-danger">SOS!!!!!!!!!!</button>
+          </div>
+        </div>
+    </main>
       <script>
+        if("serviceWorker" in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker
+            .register('sw.js')
+            .then(res => console.log("service worker registered"))
+            .catch(err => console.log("service worker not registered", err))
+          })
+        }
+        
         var map = L.map('map').fitWorld();
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
